@@ -1,0 +1,76 @@
+<html>
+<head>
+<script src='/socket.io/socket.io.js'></script>
+<script>
+var socket = io();
+function buttonclick(color,btnid){
+ // e.preventDefault();
+  console.log(color);
+  socket.emit("Color",color);
+  document.getElementById(btnid).blur();
+}
+socket.on('Changecolor',function(col){
+
+});
+</script>
+<title>SocketClient</title>
+<style>
+  body{
+    background-color: rgb(68, 117, 173);
+    overflow: hidden;
+  }
+  h2{
+    text-align:center;
+    font-size: 40px;
+    margin-top: 140px;
+    font-weight:100;
+    letter-spacing: 0.15em;
+    color: antiquewhite;
+  }
+.button{
+  border-radius: 70px;
+  border:none;
+  color: white;
+  padding: 80px 100px;
+  height:36vw;width: 40%;
+  box-sizing: border-box;
+  box-shadow: rgb(130, 226, 170) 0px 50px;
+  transition: border 0.2s;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  
+  font-size: 16px;
+  margin: 80px 40px;
+  cursor: pointer;
+  transition: transform 0.09s,box-shadow 0.09s;
+  -webkit-tap-highlight-color: transparent;
+}
+.button:active{
+  color: white !important;
+  
+  transition: transform 0.05s,box-shadow 0.05s;
+  transform:translate(0px,50px);
+  box-shadow: rgb(130, 226, 170) 0px 0px;
+}
+.button:focus{
+  outline: none;
+
+}
+
+</style>
+</head>
+
+<body>
+  
+<div style="display: flex;justify-content: center;flex-wrap: wrap;">
+  <button value=1 class="button" id="redbtn" onclick="buttonclick(document.getElementById('redbtn').value,this.id)" style="background-color: rgb(252, 134, 134);"></button>
+  <button value=2 class="button" id="bluebtn" onclick="buttonclick(document.getElementById('bluebtn').value,this.id)" style="background-color: rgb(228, 227, 243);"></button>
+  <button value=3 class="button" id="greenbtn" onclick="buttonclick(document.getElementById('greenbtn').value,this.id)" style="background-color: rgb(115, 45, 143);"></button>
+  <button value=4 class="button" id="yellowbtn" onclick="buttonclick(document.getElementById('yellowbtn').value,this.id)" style="background-color: rgb(192, 182, 93);"></button>
+ 
+</div>
+<h2>國立政治大學<br><span style="font-size: 50px;font-weight:bold;">遠賢圖書館</span></h2>
+</body>
+
+</html>
